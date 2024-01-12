@@ -3,12 +3,13 @@
 --<< ====================================================================== >>--
 Chronometer = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceDB-2.0", "AceConsole-2.0", "AceDebug-2.0", "AceHook-2.1", "CandyBar-2.0", "FuBarPlugin-2.0")
 -- embedded libs
-local L = AceLibrary("AceLocale-2.2"):new("Chronometer")
-local BS = AceLibrary("Babble-Spell-2.2")
-local dewdrop = AceLibrary("Dewdrop-2.0")
-local waterfall 		= AceLibrary("Waterfall-1.0")
-local paint 			= AceLibrary("PaintChips-2.0")
-local self 				= Chronometer
+local L 			= AceLibrary("AceLocale-2.2"):new("Chronometer")
+local BS 			= AceLibrary("Babble-Spell-2.2")
+local spellStatus 	= AceLibrary("SpellStatus-1.0")
+local dewdrop 		= AceLibrary("Dewdrop-2.0")
+local waterfall		= AceLibrary("Waterfall-1.0")
+local paint 		= AceLibrary("PaintChips-2.0")
+local self 			= Chronometer
 
 Chronometer:RegisterDB("ChronometerDB")
 
@@ -69,21 +70,21 @@ local defaults = {
 Chronometer:RegisterDefaults('profile', defaults)
 
 local media = LibStub("LibSharedMedia-3.0")
-media:Register("statusbar", "Frost", "Interface\\Addons\\Chronometer\\Textures\\Frost")
-media:Register("statusbar", "banto", "Interface\\Addons\\Chronometer\\Textures\\banto")
-media:Register("statusbar", "smooth", "Interface\\Addons\\Chronometer\\Textures\\smooth")
-media:Register("statusbar", "perl", "Interface\\Addons\\Chronometer\\Textures\\perl")
-media:Register("statusbar", "glaze", "Interface\\Addons\\Chronometer\\Textures\\glaze")
-media:Register("statusbar",	"cilo", "Interface\\Addons\\Chronometer\\Textures\\cilo")
-media:Register("statusbar",	"charcoal", "Interface\\Addons\\Chronometer\\Textures\\Charcoal")
-media:Register("statusbar",	"diagonal", "Interface\\Addons\\Chronometer\\Textures\\Diagonal")
-media:Register("statusbar",	"fifths", "Interface\\Addons\\Chronometer\\Textures\\Fifths")
-media:Register("statusbar",	"smoothv2", "Interface\\Addons\\Chronometer\\Textures\\Smoothv2")
-media:Register("statusbar", "Healbot", "Interface\\Addons\\Chronometer\\Textures\\Healbot")
-media:Register("statusbar", "LiteStep", "Interface\\Addons\\Chronometer\\Textures\\LiteStep")
-media:Register("statusbar", "Rocks", "Interface\\Addons\\Chronometer\\Textures\\Rocks")
-media:Register("statusbar", "Runes", "Interface\\Addons\\Chronometer\\Textures\\Runes")
-media:Register("statusbar", "Xeon", "Interface\\Addons\\Chronometer\\Textures\\Xeon")
+media:Register("statusbar", "Frost", "Interface\\AddOns\\Chronometer\\Textures\\Frost")
+media:Register("statusbar", "banto", "Interface\\AddOns\\Chronometer\\Textures\\banto")
+media:Register("statusbar", "smooth", "Interface\\AddOns\\Chronometer\\Textures\\smooth")
+media:Register("statusbar", "perl", "Interface\\AddOns\\Chronometer\\Textures\\perl")
+media:Register("statusbar", "glaze", "Interface\\AddOns\\Chronometer\\Textures\\glaze")
+media:Register("statusbar",	"cilo", "Interface\\AddOns\\Chronometer\\Textures\\cilo")
+media:Register("statusbar",	"charcoal", "Interface\\AddOns\\Chronometer\\Textures\\Charcoal")
+media:Register("statusbar",	"diagonal", "Interface\\AddOns\\Chronometer\\Textures\\Diagonal")
+media:Register("statusbar",	"fifths", "Interface\\AddOns\\Chronometer\\Textures\\Fifths")
+media:Register("statusbar",	"smoothv2", "Interface\\AddOns\\Chronometer\\Textures\\Smoothv2")
+media:Register("statusbar", "Healbot", "Interface\\AddOns\\Chronometer\\Textures\\Healbot")
+media:Register("statusbar", "LiteStep", "Interface\\AddOns\\Chronometer\\Textures\\LiteStep")
+media:Register("statusbar", "Rocks", "Interface\\AddOns\\Chronometer\\Textures\\Rocks")
+media:Register("statusbar", "Runes", "Interface\\AddOns\\Chronometer\\Textures\\Runes")
+media:Register("statusbar", "Xeon", "Interface\\AddOns\\Chronometer\\Textures\\Xeon")
 
 local options
 local latins = {I=1, II=2, III=3, IV=4, V=5, VI=6, VII = 7, VIII = 8, IX = 9, X = 10, XI = 11, XII = 12, XIII = 13, XIV = 14} 
@@ -447,15 +448,15 @@ function Chronometer:OnInitialize()
 
 	self.textures = {
 		["default"] = nil,
-		["banto"] = "Interface\\Addons\\Chronometer\\Textures\\banto",
-		["smooth"] = "Interface\\Addons\\Chronometer\\Textures\\smooth",
-		["perl"] = "Interface\\Addons\\Chronometer\\Textures\\perl",
-		["glaze"] = "Interface\\Addons\\Chronometer\\Textures\\glaze",
-		["cilo"] = "Interface\\Addons\\Chronometer\\Textures\\cilo",
-		["charcoal"] = "Interface\\Addons\\Chronometer\\Textures\\Charcoal",
-		["diagonal"] = "Interface\\Addons\\Chronometer\\Textures\\Diagonal",
-		["fifths"] = "Interface\\Addons\\Chronometer\\Textures\\Fifths",
-		["smoothv2"] = "Interface\\Addons\\Chronometer\\Textures\\Smoothv2",
+		["banto"] = "Interface\\AddOns\\Chronometer\\Textures\\banto",
+		["smooth"] = "Interface\\AddOns\\Chronometer\\Textures\\smooth",
+		["perl"] = "Interface\\AddOns\\Chronometer\\Textures\\perl",
+		["glaze"] = "Interface\\AddOns\\Chronometer\\Textures\\glaze",
+		["cilo"] = "Interface\\AddOns\\Chronometer\\Textures\\cilo",
+		["charcoal"] = "Interface\\AddOns\\Chronometer\\Textures\\Charcoal",
+		["diagonal"] = "Interface\\AddOns\\Chronometer\\Textures\\Diagonal",
+		["fifths"] = "Interface\\AddOns\\Chronometer\\Textures\\Fifths",
+		["smoothv2"] = "Interface\\AddOns\\Chronometer\\Textures\\Smoothv2",
 	}
 	
 	
@@ -569,46 +570,14 @@ function Chronometer:OnEnable()
 	self.parser:RegisterEvent("Chronometer", "CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_BUFFS",  function (event, info) self:SPELL_PERIODIC(event, info) end)
 	self.parser:RegisterEvent("Chronometer", "CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_DAMAGE", function (event, info) self:SPELL_PERIODIC(event, info) end)
 
-	-- Refresh-on-melee hit/crit handling
-	local enableRoM = false
-	for n, t in pairs(self.timers[self.SPELL]) do
-		if t.x.rom or t.x.romc then
-			enableRoM = true
-			break
-		end
-	end
-	if not enableRom then
-		for n, t in pairs(self.timers[self.EVENT]) do
-			if t.x.rom or t.x.romc then
-				enableRoM = true
-				break
-			end
-		end
-	end
-	if enableRoM then
-		self.parser:RegisterEvent("Chronometer", "CHAT_MSG_COMBAT_SELF_HITS", function (event, info) self:SELF_HITS(event, info) end)
-		self.parser:RegisterEvent("Chronometer", "CHAT_MSG_COMBAT_SELF_HITS", function (event, info) self:SELF_CRITS(event, info) end)
-	end
-
 	-- Spellcast handling
 	self.captive    = {}
 	self.active     = {}
-	self:Hook("UseAction")
-	self:Hook("CastSpell")
-	self:Hook("CastSpellByName")
-	self:Hook("SpellTargetUnit")
-	self:Hook("TargetUnit")
-	self:Hook("SpellStopTargeting")
-	self:Hook("SpellStopCasting")
-	self:HookScript(WorldFrame, "OnMouseDown")
-	self:RegisterEvent("SPELLCAST_INTERRUPTED")
-	self:RegisterEvent("SPELLCAST_START")
-	self:RegisterEvent("SPELLCAST_STOP")
-	self:RegisterEvent("PLAYER_DEAD")
 	self.parser:RegisterEvent("Chronometer", "CHAT_MSG_SPELL_SELF_DAMAGE", function(event, info) self:SELF_DAMAGE(event, info) end)
 	self.parser:RegisterEvent("Chronometer", "CHAT_MSG_SPELL_DAMAGESHIELDS_ON_SELF", function(event, info) self:SELF_DAMAGE(event, info) end)
-	self.parser:RegisterEvent("Chronometer", "CHAT_MSG_SPELL_FAILED_LOCALPLAYER", function(event, info) self:SPELL_FAILED(event, info) end)
-	
+	self:RegisterEvent("SpellStatus_SpellCastInstant")
+	self:RegisterEvent("SpellStatus_SpellCastCastingFinish")
+	self:RegisterEvent("SpellStatus_SpellCastFailure")
 	
 	-- Fill options with timers
 	local _, class = UnitClass("player")
@@ -968,22 +937,6 @@ function Chronometer:CandyOnClick(id, button, reactive, middlecast)
 		Chronometer.rightclick = true
 		self:ScheduleEvent(function() Chronometer.rightclick = false;  Chronometer:CancelScheduledEvent("ChronometerCheckMouselook") end, 0.5)
 		self:ScheduleRepeatingEvent("ChronometerCheckMouselook",Chronometer.onClickStopCandyBar, 0.06, self, id)
-	elseif button == "MiddleButton" and middlecast then
-		for i = 1, 20 do
-			if self.bars[i].id == id then
-				return self:CastSpellOnUnit(middlecast, self.bars[i].target)
-			end
-		end
-	elseif button == "LeftButton" and reactive then
-		for i = 1, 20 do
-			if self.bars[i].id == id then
-				if self.bars[i].rank > 0 then
-					return self:CastSpellOnUnit(self.spellcache:GetSpellNameText(self.bars[i].name, self.bars[i].rank), self.bars[i].target)
-				else
-					return self:CastSpellOnUnit(self.bars[i].name, self.bars[i].target)
-				end
-			end
-		end
 	end
 end
 
@@ -995,28 +948,6 @@ function Chronometer:onClickStopCandyBar(id)
 	end
 end
 
--- This is blatantly stolen from Clique
-function Chronometer:CastSpellOnUnit(spell, unit)
-
-	local restore = nil
-	local hadtarget = UnitExists("target")
-	
-	if unit and unit ~= "none" then
-		if hadtarget and UnitName("target") ~= unit then
-			restore = true
-		end
-
-		TargetByName(unit, true)
-	end
-	
-	CastSpellByName(spell)
-
-	if restore then
-		TargetLastTarget()
-	elseif not hadtarget then
-		ClearTarget()
-	end
-end
 
 --<< ====================================================================== >>--
 -- Anchor Processing                                                          --
@@ -1155,23 +1086,10 @@ function Chronometer:SPELL_PERIODIC(event, info)
 		self:StartTimer(timer, aura, unit, rank)
 	elseif timer and  info.isDOT and not timer.x.a then
 		timer.v = nil; timer.t = nil;
-		self:StartTimer(timer, aura, "none")
+		self:StartTimer(timer, aura, "none", rank)
 	end
 end
 
-
-function Chronometer:SELF_CRITS(event, info)
-		-- Process refresh-on-crit buffs (flurry)
-	if info.type == "hit" and info.source == ParserLib_SELF and info.isCrit then
-		for i = 1, 20 do
-			if self.bars[i].id then
-				if self.bars[i].timer.x.romc then
-					self:StartTimer(self.bars[i].timer, self.bars[i].name, self.bars[i].target, self.bars[i].rank)
-				end
-			end
-		end
-	end
-end
 
 -- Now spellcast handling - the big one
 
@@ -1198,105 +1116,50 @@ end
 --<< ====================================================================== >>--
 -- Catch Spellcast                                                            --
 --<< ====================================================================== >>--
-function Chronometer:UseAction(slot, clicked, onself)
-	if not GetActionText(slot) and HasAction(slot) then
-		self.gratuity:SetAction(slot)
-		spellName = self.gratuity:GetLine(1)
-		spellRank = self.gratuity:GetLine(1, true)
-		local name, _, _, _, rank = self.spellcache:GetSpellData(spellName, spellRank)
-		local timer = self.timers[Chronometer.SPELL][name]
-		if timer then
-			self:CatchSpellcast(timer, name, rank, onself)
-		end
-	end
-	return self.hooks["UseAction"](slot, clicked, onself)
-end
 
-function Chronometer:CastSpell(index, booktype)
-	local name, rank = GetSpellName(index, booktype)
+function Chronometer:SpellStatus_SpellCastCastingFinish(id, name, rank, fullname, caststart, caststop, castduration, castdelay, activetarget)
 	local timer = self.timers[Chronometer.SPELL][name]
+	rank = gsub(rank, "Rank ", "")
+	if not rank or rank == "" then rank = 0 end
 	if timer then
-		if not rank or rank == "" then
-			rank = 0
-		else
-			rank = self.spellcache:GetRankNumber(rank)
-		end
-		self:CatchSpellcast(timer, name, rank)
+		self:ScheduleEvent("chronometerspellcast", self.CatchSpellcast, 0.1, self, timer, name, rank, activetarget)
 	end
-	return self.hooks["CastSpell"](index, booktype)
 end
 
-function Chronometer:CastSpellByName(text, onself)
-	local name, _, _, _, rank = self.spellcache:GetSpellData(text, nil)
+function Chronometer:SpellStatus_SpellCastFailure(id, name, rank, fullname, isActiveSpell, UIEM_Message, CMSFLP_SpellName, CMSFLP_Message)
+	-- do nothing if we are casting a spell but the error doesn't concern that spell
+	if (spellStatus:IsCastingOrChanneling() and not spellStatus:IsActiveSpell(id, name)) then
+		return
+	end
+	if self:IsEventScheduled("chronometerspellcast") then
+		self:CancelScheduledEvent("chronometerspellcast")
+	end
+end
+
+function Chronometer:SpellStatus_SpellCastInstant(id, name, rank, fullname, caststart, caststop, castduration, castdelay, activetarget)
 	local timer = self.timers[Chronometer.SPELL][name]
+	rank = gsub(rank, "Rank ", "")
+	if not rank or rank == "" then rank = 0 end
 	if timer then
-		self:CatchSpellcast(timer, name, rank, oneself)
+		self:CatchSpellcast(timer, name, rank, activetarget)
 	end
-	return self.hooks["CastSpellByName"](text, onself)
 end
 
-function Chronometer:CatchSpellcast(timer, name, rank, onself)
+function Chronometer:CatchSpellcast(timer, name, rank, spelltarget)
 	local unit
 	if timer.k.t then
-		if timer.k.s then
-			if onself and onself == 1 then unit = UnitName("player")
-			elseif UnitExists("target") then
-				if timer.k.g then
-					if UnitIsFriend("player", "target") then unit = UnitName("target") end
-				else
-					if UnitCanAttack("player", "target") then unit = UnitName("target") end
-				end
-			end
-		else
-			if UnitExists("target") then unit = UnitName("target") else return end
+		if spelltarget then unit = spelltarget
+		elseif UnitExists("target") then unit = UnitName("target")
 		end
 	else
 		unit = "none"
 	end	
+	
 	local cp = GetComboPoints()
 	if cp>0 then timer.cp = cp end
-	table.insert(self.captive, {t=timer, n=name, u=unit, r=rank})
-end
-
---<< ====================================================================== >>--
--- Catch Spellcast Target                                                     --
---<< ====================================================================== >>--
-function Chronometer:SpellTargetUnit(unit)
-	for k, captive in pairs(self.captive) do
-		if not captive.u then
-			captive.u = UnitName(unit)
-		end
-	end
-	return self.hooks["SpellTargetUnit"](unit)
-end
-
-function Chronometer:TargetUnit(unit)
-	for k, captive in pairs(self.captive) do
-		if not captive.u then
-			captive.u = UnitName(unit)
-		end
-	end
-	return self.hooks["TargetUnit"](unit)
-end
-
-function Chronometer:OnMouseDown()
-	for k, captive in pairs(self.captive) do
-		if not captive.u and arg1 == "LeftButton" and UnitExists("mouseover") then
-			captive.u = UnitName("mouseover")
-		end
-	end
-	return self.hooks[WorldFrame]["OnMouseDown"](WorldFrame, arg1)
-end
-
---<< ====================================================================== >>--
--- Complete Spellcast                                                         --
---<< ====================================================================== >>--
-function Chronometer:SPELLCAST_START()
 	
-end
-
-function Chronometer:SPELLCAST_STOP()
-	--self:Print("--CP" .. GetComboPoints())
+	table.insert(self.captive, {t=timer, n=name, u=unit, r=rank})
+	
 	local captive = self.captive[1]
 	if captive then
 
@@ -1311,11 +1174,9 @@ function Chronometer:SPELLCAST_STOP()
 		end
 
 		if captive.u == "none" then
-	--		self:Print("-_-CP" .. captive.cp)
 			self:StartTimer(captive.t,captive.n, captive.u, captive.r)
 		else
 			self.active[captive.n] = {t=captive.t, n=captive.n, u=captive.u, r=captive.r}
-			--self.active[captive.n].t.cp = captive.t.cp
 			self:ScheduleEvent(self.CompleteCast, 0.5, self, captive.n)
 		end
 	end
@@ -1333,43 +1194,16 @@ end
 --<< ====================================================================== >>--
 -- Drop Spellcast                                                             --
 --<< ====================================================================== >>--
-function Chronometer:SpellStopCasting()
-	self.captive = {}
-	return self.hooks["SpellStopCasting"]()
-end
-
-function Chronometer:SpellStopTargeting()
-	self.captive = {}
-	return self.hooks["SpellStopTargeting"]()
-end
-
-function Chronometer:SPELL_FAILED(event, info)
-	for k, captive in pairs(self.captive) do
-		if captive.n == info.skill then
-			table.remove(self.captive, k)
-			break
-		end
-	end
-end
-
-function Chronometer:SPELLCAST_INTERRUPTED()
-	for k, active in pairs(self.active) do
-		-- The spell missed - disable events activated by this spell
-		if active.t and active.t.x.ea then
-			for name, valid in pairs(active.t.x.ea) do
-				local event = self.timers[Chronometer.EVENT][name]
-				event.r = nil; event.v = nil; event.t = nil
-			end
-		end
-	end
-
-	self.active = {}
-end
 
 function Chronometer:SELF_DAMAGE(event, info)
-	local active = self.active[info.skill]
-	if active and info.type == "miss" and info.victim == active.u then
+	self:ScheduleEvent(self.CheckSELF_DAMAGE, 0.4, self, event, info)
+end
 
+function Chronometer:CheckSELF_DAMAGE(event, info)
+	local active = self.active[info.skill]
+	if not active then return end
+	local activename = string.gsub(active.u, "(%s%(.+%))", "")--%s%(.%)
+	if info.type == "miss" and info.victim == activename then
 		-- The spell missed - disable events activated by this spell
 		if active.t and active.t.x.ea then
 			for name, valid in pairs(active.t.x.ea) do
@@ -1378,7 +1212,7 @@ function Chronometer:SELF_DAMAGE(event, info)
 			end
 		end
 		self.active[info.skill] = nil
-	elseif active and info.type == "hit" and info.victim == active.u then
+	elseif info.type == "hit" and info.victim == activename then
 		if active.t and active.t.x.ea then
 			for name, valid in pairs(active.t.x.ea) do
 				local event = self.timers[Chronometer.EVENT][name]
@@ -1386,19 +1220,6 @@ function Chronometer:SELF_DAMAGE(event, info)
 					if self.bars[i].id and self.bars[i].id == name.."-"..info.victim then
 						self:StartTimer(self.bars[i].timer, self.bars[i].name, self.bars[i].target, self.bars[i].rank)
 					end
-				end
-			end
-		end
-	end
-end
-
-function Chronometer:SELF_HITS(event, info)
-	-- Process refresh-on-hit debuffs (judgements)
-	if info.type == "hit" and info.source == ParserLib_SELF then
-		for i = 1, 20 do
-			if self.bars[i].id then
-				if self.bars[i].target == info.victim and self.bars[i].timer.x.rom then
-					self:StartTimer(self.bars[i].timer, self.bars[i].name, self.bars[i].target, self.bars[i].rank)
 				end
 			end
 		end

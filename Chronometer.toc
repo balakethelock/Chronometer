@@ -4,17 +4,17 @@
 ## Notes: Chronometer - an Ace2 Timer Mod based on AceTimer for Vanilla
 ## Notes-ruRU: Chronometer - мод Ace2 таймера на основе AceTimer
 ## Notes-zhCN: Chronometer - 基于AceTimer的Ace2计时条插件
-## Version: 0.15
+## Version: 0.14
 ## DefaultState:
 ## Dependencies:
-## OptionalDeps: Ace2, Babble-2.2, PaintChipsLib, CompostLib, CandyBar, Deformat, GratuityLib, SpellCacheLib, ParserLib, DewdropLib
+## OptionalDeps: Ace2, Babble-2.2, PaintChipsLib, CompostLib, CandyBar, Deformat, GratuityLib, SpellCacheLib, ParserLib, DewdropLib, SpellStatusLib
 ## SavedVariables: ChronometerDB
 
 ## X-ReleaseDate: $Date: 2022-08-25 $
 ## X-Email: laytya@gmail.com
 ## X-Category: Combat
 ## X-Website: https://github.com/laytya/Chronometer-vanilla
-## X-Embeds: Ace2, Babble-2.2, PaintChipsLib, CompostLib, CandyBar, Deformat, GratuityLib, SpellCacheLib, ParserLib, DewdropLib
+## X-Embeds: Ace2, Babble-2.2, PaintChipsLib, CompostLib, CandyBar, Deformat, GratuityLib, SpellCacheLib, ParserLib, DewdropLib, SpellStatusLib
 
 libs\AceLibrary\AceLibrary.lua
 libs\AceOO-2.0\AceOO-2.0.lua
@@ -45,6 +45,8 @@ libs\LibSharedMedia-3.0\lib.xml
 libs\Gratuity-2.0\Gratuity-2.0.lua
 libs\Deformat-2.0\Deformat-2.0.lua
 libs\SpellCache-1.0\SpellCache-1.0.lua
+libs\SpellStatus-1.0\SpellStatus-1.0.lua
+
 
 libs\Dewdrop-2.0\Dewdrop-2.0.lua
 libs\Waterfall-1.0\Waterfall-1.0.lua

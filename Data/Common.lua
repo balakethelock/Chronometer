@@ -13,10 +13,13 @@ function Chronometer:CommonSetup()
 		self:AddTimer(self.EVENT, BS["Holy Strength"],         	15, 0,1,1, { cr="YELLOW", a=1 , cl="COMMON" })
 		
 	end
-	-- zg casteer trinket http://classicdb.ch/?item=19950
-	self:AddTimer(self.EVENT, BS["Unstable Power"],          	20, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON" })
-	self:AddTimer(self.EVENT, BS["Ephemeral Power"],          	15, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON" })
-	self:AddTimer(self.EVENT, "Mind Quickening",          		20, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON",xn=BS["Critical Mass"]})
+	if (UnitPowerType("player") == 0) then
+	-- caster trinkets
+		self:AddTimer(self.EVENT, BS["Unstable Power"],          	20, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON" })
+		self:AddTimer(self.EVENT, BS["Ephemeral Power"],          	15, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON" })
+		self:AddTimer(self.EVENT, BS["Essence of Sapphiron"],		20, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON" })		
+		self:AddTimer(self.EVENT, "Mind Quickening",          		20, 0, 1, 1, { a=1, cr="CYAN", cl="COMMON",xn=BS["Critical Mass"]})
+	end
 end
 
 table.insert(Chronometer.dataSetup, Chronometer.CommonSetup)
