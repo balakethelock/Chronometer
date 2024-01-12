@@ -1,4 +1,4 @@
-﻿--<< ====================================================================== >>--
+--<< ====================================================================== >>--
 -- Class Setup                                                                --
 --<< ====================================================================== >>--
 Chronometer = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceDB-2.0", "AceConsole-2.0", "AceDebug-2.0", "AceHook-2.1", "CandyBar-2.0", "FuBarPlugin-2.0")
@@ -1138,8 +1138,8 @@ end
 
 function Chronometer:SpellStatus_SpellCastInstant(id, name, rank, fullname, caststart, caststop, castduration, castdelay, activetarget)
 	local timer = self.timers[Chronometer.SPELL][name]
-	rank = gsub(rank, "Rank ", "")
-	if not rank or rank == "" then rank = 0 end
+	if rank and rank ~= "" then rank = gsub(rank, "Rank ", "")
+	else rank = 0 end
 	if timer then
 		self:CatchSpellcast(timer, name, rank, activetarget)
 	end
