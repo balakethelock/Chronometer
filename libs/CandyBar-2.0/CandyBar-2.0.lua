@@ -693,7 +693,7 @@ function CandyBar:SetFontSize(name, fontsize)
 	end
 	
 	local font, _, style = GameFontHighlight:GetFont()
-	local timertextwidth = fontsize * 3.6
+	local timertextwidth = fontsize * 3
 	local width = handler.width or defaults.width
 	local f = handler.frame
 	
@@ -804,7 +804,7 @@ function CandyBar:SetWidth(name, width)
 
 	local height = handler.height or defaults.height
 	local fontsize = handler.fontsize or defaults.fontsize
-	local timertextwidth = fontsize * 3.6
+	local timertextwidth = fontsize * 3
 	local f = handler.frame
 	f:SetWidth(width + height)
 	f.statusbar:SetWidth(width)
@@ -1437,7 +1437,7 @@ function CandyBar:Update(name)
 		m = floor(m/60)
 		local s = t - ((h*3600) + (m*60))
 		if h > 0 then
-			timetext = string.format("%d:%02d", h, m)
+			timetext = ("%d:%02d"):format(h, m)
 		elseif m > 0 then
 			timetext = string.format("%d:%02d", m, floor(s))
 		elseif s < 10 then
@@ -1579,7 +1579,7 @@ do
 		if not scale then
 			scale = 1
 		end
-		local timertextwidth = fontsize * 3.6
+		local timertextwidth = fontsize * 3
 		local font, _, style = GameFontHighlight:GetFont()
 
 		if not f and getn(CandyBar.framepool) > 0 then
@@ -1700,7 +1700,7 @@ do
 		f.text:SetFont(font, fontsize, style)
 		f.text:SetHeight(height)
 		f.text:SetWidth((width - timertextwidth) *.9)
-		f.text:SetPoint("RIGHT", f.statusbar, "RIGHT", 0, 0)
+		f.text:SetPoint("LEFT", f.statusbar, "LEFT", timertextwidth *1.1, 0)
 		f.text:SetJustifyH("LEFT")
 		f.text:SetText(text)
 		f.text:SetTextColor(textcolor[1], textcolor[2], textcolor[3], textcolor[4])
