@@ -1118,8 +1118,8 @@ end
 
 function Chronometer:SpellStatus_SpellCastCastingFinish(id, name, rank, fullname, caststart, caststop, castduration, castdelay, activetarget)
 	local timer = self.timers[Chronometer.SPELL][name]
-	rank = gsub(rank, "Rank ", "")
-	if not rank or rank == "" then rank = 0 end
+	if rank and rank ~= "" then rank = gsub(rank, "Rank ", "")
+	else rank = 0 end
 	if timer then
 		self:ScheduleEvent("chronometerspellcast", self.CatchSpellcast, 0.1, self, timer, name, rank, activetarget)
 	end
