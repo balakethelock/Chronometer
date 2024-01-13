@@ -1059,7 +1059,7 @@ function Chronometer:SPELL_PERIODIC(event, info)
 	if info.victim ~= ParserLib_SELF then
 		unit = info.victim
 	end
-	aura = info.skill
+	aura = string.gsub(info.skill, " %(1%)", "")
 	_, _, rank = string.find(aura,"%s([IVX]+)[^u]")
 	if rank then
 		rank = latins[rank]
@@ -1067,7 +1067,6 @@ function Chronometer:SPELL_PERIODIC(event, info)
 	end
 	
 	self:Debug(join({aura,rank}," | "))
-	
 	if aura == "Deep Wound" then aura = "Deep Wounds"  end   
 	
 	local timer = self.timers[self.EVENT][aura]	
@@ -1086,7 +1085,7 @@ function Chronometer:SPELL_PERIODIC(event, info)
 		self:StartTimer(timer, aura, unit, rank)
 	elseif timer and  info.isDOT and not timer.x.a then
 		timer.v = nil; timer.t = nil;
-		self:StartTimer(timer, aura, "none", rank)
+		self:StartTimer(timer, aura, "none")
 	end
 end
 
